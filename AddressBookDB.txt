@@ -1,0 +1,67 @@
+	mysql> create table AddressBookService (id int not null AUTO_INCREMENT,FirstName varchar(250),LastName varchar(250),
+		-> Address varchar(250),city varchar(250),state varchar(250),zip varchar(250),phone_number varchar(250),email varchar(250),
+		-> primary key (id));
+	Query OK, 0 rows affected (0.08 sec)
+	
+	insert into AddressBookService (FirstName,LastName,Address,city,state,zip,phone_number,email) values('Arjun','Reddy','Telangana'
+    ->  ,'Hyd','Telengana','500052','9848905744','arjun45@gmail.com');
+	Query OK, 1 row affected (0.01 sec)
+	
+	
+	mysql> select * from AddressBookService ;
+	+----+-----------+----------+-----------+------+-----------+--------+--------------+-------------------+
+	| id | FirstName | LastName | Address   | city | state     | zip    | phone_number | email             |
+	+----+-----------+----------+-----------+------+-----------+--------+--------------+-------------------+
+	|  1 | Arjun     | Reddy    | Telangana | Hyd  | Telengana | 500052 | 9848905744   | arjun45@gmail.com |
+	+----+-----------+----------+-----------+------+-----------+--------+--------------+-------------------+
+	1 row in set (0.00 sec)
+	
+	mysql> update AddressBookService set city = 'Banglore' where FirstName = 'Arjun';
+	Query OK, 1 row affected (0.01 sec)
+	Rows matched: 1  Changed: 1  Warnings: 0
+	
+	mysql> select * from AddressbookService;
+	+----+-----------+----------+-----------+----------+-----------+--------+--------------+-------------------+
+	| id | FirstName | LastName | Address   | city     | state     | zip    | phone_number | email             |
+	+----+-----------+----------+-----------+----------+-----------+--------+--------------+-------------------+
+	|  1 | Arjun     | Reddy    | Telangana | Banglore | Telengana | 500052 | 9848905744   | arjun45@gmail.com |
+	+----+-----------+----------+-----------+----------+-----------+--------+--------------+-------------------+
+	1 row in set (0.00 sec)
+	
+	mysql> delete from  AddressBookService where FirstName = 'Arjun';
+	Query OK, 1 row affected (0.01 sec)
+
+	mysql> select * from AddressBookService;
+	+----+-----------+----------+-------------+-------------+---------------+-------+--------------+------------------+
+	| id | FirstName | LastName | Address     | city        | state         | zip   | phone_number | email            |
+	+----+-----------+----------+-------------+-------------+---------------+-------+--------------+------------------+
+	|  2 | Kalyan    | Babu     | Nehru nagar | Rajahmandry | AndhraPradesh | 50033 | 9838459234   | kalyan@gmail.com |
+	+----+-----------+----------+-------------+-------------+---------------+-------+--------------+------------------+
+	1 row in set (0.00 sec)
+	
+	
+	mysql> select * from AddressBookService where City = 'Rajahmandry' or State = 'AndhraPradesh';
+	+----+-----------+----------+-------------+-------------+---------------+-------+--------------+------------------+
+	| id | FirstName | LastName | Address     | city        | state         | zip   | phone_number | email            |
+	+----+-----------+----------+-------------+-------------+---------------+-------+--------------+------------------+
+	|  2 | Kalyan    | Babu     | Nehru nagar | Rajahmandry | AndhraPradesh | 50033 | 9838459234   | kalyan@gmail.com |
+	+----+-----------+----------+-------------+-------------+---------------+-------+--------------+------------------+
+	1 row in set (0.00 sec)
+	
+	mysql> select count(*) from  AddressBookService where city = 'Rajahmandry' and State = 'AndhraPradesh';
+	+----------+
+	| count(*) |
+	+----------+
+	|        1 |
+	+----------+
+	1 row in set (0.00 sec)
+	
+	
+	mysql> select * from AddressBookService where State = 'AndhraPradesh' order by FirstName;
+	+----+-----------+----------+--------------+-------------+---------------+-------+--------------+------------------+
+	| id | FirstName | LastName | Address      | city        | state         | zip   | phone_number | email            |
+	+----+-----------+----------+--------------+-------------+---------------+-------+--------------+------------------+
+	|  2 | Kalyan    | Babu     | Nehru nagar  | Rajahmandry | AndhraPradesh | 50033 | 9838459234   | kalyan@gmail.com |
+	|  3 | Suman     | Goud     | Gandhi nagar | Bhimavaram  | AndhraPradesh | 50044 | 98384592332  | suman@gmail.com  |
+	+----+-----------+----------+--------------+-------------+---------------+-------+--------------+------------------+
+	2 rows in set (0.02 sec)
